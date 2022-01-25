@@ -1,0 +1,18 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+
+{% load static %}
+<img src="{% static 'portfolio/rawash_logo.jpg' %}">
+<h1>Rawash Personal Portfolio</h1>
+<a href="{% static 'portfolio/rawash_pd_plan.pdf' %}">PD Plan</a>
+<a href="{% url 'blog:blog_home' %}">Blog</a>
+<a href="https://www.linkedin.com/">LinkedIn</a>
+<br>
+
+{% for project in projects %}
+<h2>{{ project.title }}</h2>
+<img src="{{ project.image.url }}" height="256">
+<p>{{ project.description|truncatechars:100 }}</p>
+{% endfor %}
+
+{% endblock %}
