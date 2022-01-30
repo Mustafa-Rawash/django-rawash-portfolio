@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-&gk@w66o+cfw=fqe&+a19xz51z1r)jkhdsd187tak%ko2&ee01'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['mustafarawash.pythonanywhere.com']
 
@@ -127,3 +127,8 @@ MEDIA_URL = 'media/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+try:
+    from .local_settings import *
+except ImportError:
+    print('Looks like no local settings file. You must be on production')
